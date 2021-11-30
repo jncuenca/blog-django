@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    Add post
+{% endblock title %}
+
+{% block content %}
+<div class="myForm">
+    
+    {% if invalid %}
+      <div class="alert alert-danger" role="alert">
+        Empty fields!
+      </div>
+    {% endif %}
+
+    <h1>Add new Post</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" name='title' id='title-post' placeholder="Title">
+        </div><br>
+        <div class="form-group">
+            <textarea name="body" class="form-control" id="body-post" cols="20" rows="10"></textarea>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Add Post</button>
+    </form>
+</div>
+{% endblock content %}
+
+
+

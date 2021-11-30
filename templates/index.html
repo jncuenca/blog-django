@@ -5,28 +5,22 @@
 {% block content %}
 <div class='pageTitle'><h1>TryBlog</h1></div>
  
+
+
+<div class="mx-auto mt-4" style="width: 100px;">
+    <a href="{% url 'posts:create-post' %}"><button class="btn btn-primary">Add Post</button></a>
+  </div>
+
 {%for post in posts reversed%}
-<div class="posts">
-    <a style="color: black; text-decoration:none;" href="post/{{post.id}}">
+    <div class="posts" style="color: black; text-decoration:none;">
         <h3>{{post.title}}</h3>
-        <h6>{{post.created_at}}</h6>
-        <p>{{post.body|truncatewords:20}}</p>
-    </a>
-</div>
+            <h6>{{post.created_at}}</h6>
+            <p>{{post.body|truncatewords:20}}</p>
+        <a href="get-post/{{post.id}}">
+            <button class="btn btn-secondary">See post</button>
+        </a>
+    </div>
 {%endfor%}
-<div class="myForm">
-    {{ message }}   
-    <h1>Add new Post</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <input type="text" class="form-control" name='title' id='title-post' placeholder="Title">
-        </div><br>
-        <div class="form-group">
-            <textarea name="body" class="form-control" id="body-post" cols="20" rows="10"></textarea>
-        </div><br>
-        <button type="submit" class="btn btn-primary">Add Post</button>
-    </form>
-</div>
+
 {% endblock content %}
 
