@@ -14,7 +14,6 @@ def get_post_view(request, pk):
 
 
 def create_post_view(request):
-    
     if request.method == 'POST':
         title = request.POST['title']
         body = request.POST['body']
@@ -26,5 +25,10 @@ def create_post_view(request):
             post.save()
             return redirect('posts:index')
             
-
     return render(request, 'create-post.html')
+
+def delete_post(request):
+    id = request.POST.get('post-id')
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect('posts:index')

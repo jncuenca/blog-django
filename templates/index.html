@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block titlepage %}My blog{% endblock titlepage %}
+{% block titlepage %}Try blog{% endblock titlepage %}
 
 {% block content %}
-<div class='pageTitle'><h1>TryBlog</h1></div>
+<div class='pageTitle'><h1>Try Blog</h1></div>
  
 
 
@@ -19,6 +19,11 @@
         <a href="get-post/{{post.id}}">
             <button class="btn btn-secondary">See post</button>
         </a>
+        <form action="{% url 'posts:delete-post' %}" method="POST" class="mt-2">
+            {% csrf_token %}
+            <input type="hidden" name="post-id" value="{{post.id}}"/>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </div>
 {%endfor%}
 
