@@ -14,3 +14,6 @@ To run this project, download it locally, then:
 $ cd ../blog
 $ python manage.py runserver
 ```
+
+## See here
+https://blogjcc.herokuapp.com/
